@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Donate — Akshara Dhare Seva Trust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            DEFAULT: '#0F2942',
+            50: '#EAF0F5',
+            100: '#CBDAE6',
+            600: '#153450',
+            700: '#0F2942',
+            800: '#0B1F33',
+            900: '#081726',
+          },
+          ember: {
+            DEFAULT: '#E05319',
+            50: '#FDF0EA',
+            100: '#FBDCC9',
+            600: '#C4460F',
+            700: '#A83B0D',
+          },
+          offwhite: '#F8FAFC',
+        },
+        fontFamily: {
+          display: ['Sora', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  h1, h2, h3, h4, .font-display { font-family: 'Sora', sans-serif; }
+
+  .card-hover { transition: transform 0.35s ease, box-shadow 0.35s ease; }
+  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -12px rgba(15, 41, 66, 0.18); }
+
+  .link-arrow span { display: inline-block; transition: transform 0.25s ease; }
+  .link-arrow:hover span { transform: translateX(6px); }
+
+  .fade-in { animation: fadeIn 0.9s ease both; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  ::selection { background: #E05319; color: #fff; }
+
+  .focus-visible-ring:focus-visible {
+    outline: 3px solid #E05319;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  .mobile-menu { transition: max-height 0.3s ease, opacity 0.3s ease; }
+
+  .dot-pattern {
+    background-image: radial-gradient(#E05319 1.5px, transparent 1.5px);
+    background-size: 14px 14px;
+  }
+
+  /* Timeline */
+  .timeline-line {
+    background: linear-gradient(180deg, #E05319 0%, #CBDAE6 100%);
+  }
+  .timeline-dot {
+    box-shadow: 0 0 0 6px #F8FAFC;
+  }
+
+  /* Allocation bar */
+  .alloc-bar-fill {
+    transition: width 1.2s ease;
+  }
+
+  /* Donate modal animation */
+  #donateModal:not(.hidden) .donate-modal-panel {
+    animation: modalPop 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes modalPop {
+    from { opacity: 0; transform: translateY(12px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+</style>
+</head>
+<body class="bg-white text-navy-700 antialiased">
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<div class="bg-navy-800 text-navy-100 text-xs">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-2.5 flex items-center justify-between">
+    <div class="flex items-center gap-5">
+      <a href="mailto:hello@aksharadharetrust.org" class="hidden sm:flex items-center gap-2 hover:text-ember transition-colors">
+        <i data-lucide="mail" class="h-3.5 w-3.5"></i>
+        hello@aksharadharetrust.org
+      </a>
+      <a href="tel:+91999999999" class="flex items-center gap-2 hover:text-ember transition-colors">
+        <i data-lucide="phone" class="h-3.5 w-3.5"></i>
+        +91 99999 99999
+      </a>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="#" class="hover:text-ember transition-colors"><i data-lucide="facebook" class="h-3.5 w-3.5"></i></a>
+      <a href="#" class="hover:text-ember transition-colors"><i data-lucide="instagram" class="h-3.5 w-3.5"></i></a>
+      <a href="#" class="hover:text-ember transition-colors"><i data-lucide="twitter" class="h-3.5 w-3.5"></i></a>
+      <a href="#" class="hover:text-ember transition-colors"><i data-lucide="youtube" class="h-3.5 w-3.5"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="bg-white border-b border-navy-50 sticky top-0 z-40">
+  <nav class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between py-4">
+    <a href="index.html" class="flex items-center gap-2 focus-visible-ring rounded-md">
+      <img src="https://res.cloudinary.com/yqurny1w/image/upload/v1784405517/Untitled_design_sdeyo6.jpg" alt="Akshara Dhare Seva Trust logo" class="h-16 w-auto object-contain" />
+    </a>
+
+    <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-navy-700">
+      <a href="index.html" class="hover:text-ember transition-colors focus-visible-ring rounded-md">Home</a>
+      <a href="index.html#about" class="hover:text-ember transition-colors focus-visible-ring rounded-md">About Us</a>
+      <a href="index.html#programs" class="hover:text-ember transition-colors focus-visible-ring rounded-md">Programs</a>
+      <a href="index.html#gallery" class="hover:text-ember transition-colors focus-visible-ring rounded-md">Gallery</a>
+      <a href="donate.html" class="text-ember transition-colors focus-visible-ring rounded-md">Donate</a>
+      <a href="index.html#contact" class="hover:text-ember transition-colors focus-visible-ring rounded-md">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="#" class="donate-trigger hidden sm:inline-flex items-center gap-2 bg-ember hover:bg-ember-600 transition-colors text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md shadow-ember-600/20 focus-visible-ring">
+        DONATE NOW
+      </a>
+      <button id="menuBtn" class="lg:hidden h-10 w-10 flex items-center justify-center rounded-lg border border-navy-100 focus-visible-ring">
+        <i data-lucide="menu" class="h-5 w-5 text-navy-700"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="lg:hidden max-h-0 overflow-hidden opacity-0 mobile-menu">
+    <div class="flex flex-col gap-1 px-6 pb-4">
+      <a href="index.html" class="py-2.5 text-navy-700 font-medium border-b border-navy-50">Home</a>
+      <a href="index.html#about" class="py-2.5 text-navy-700 font-medium border-b border-navy-50">About Us</a>
+      <a href="index.html#programs" class="py-2.5 text-navy-700 font-medium border-b border-navy-50">Programs</a>
+      <a href="index.html#gallery" class="py-2.5 text-navy-700 font-medium border-b border-navy-50">Gallery</a>
+      <a href="donate.html" class="py-2.5 text-ember font-medium border-b border-navy-50">Donate</a>
+      <a href="index.html#contact" class="py-2.5 text-navy-700 font-medium">Contact</a>
+      <a href="#" class="donate-trigger mt-2 mb-1 text-center bg-ember text-white font-semibold py-2.5 rounded-full">DONATE NOW</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="bg-offwhite">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="fade-in">
+        <span class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-ember bg-ember-50 px-3 py-1.5 rounded-full uppercase">
+          <i data-lucide="shield-check" class="h-3.5 w-3.5"></i>
+          Every Rupee, Accounted For
+        </span>
+
+        <h1 class="mt-6 font-display font-extrabold text-4xl sm:text-5xl leading-[1.12] text-navy-700">
+          See Exactly How Your <span class="text-ember">Donation</span> Changes A Life
+        </h1>
+
+        <p class="mt-6 text-navy-700/70 text-base sm:text-lg leading-relaxed max-w-md">
+          We know trust is earned, not asked for. Below is the actual journey your
+          contribution takes — from the moment it reaches us to the day a child
+          holds a new book in their hands.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a href="#" class="donate-trigger inline-flex items-center gap-2 bg-ember hover:bg-ember-600 transition-colors text-white font-semibold px-7 py-3.5 rounded-full shadow-lg shadow-ember-600/25 focus-visible-ring">
+            DONATE NOW
+            <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </a>
+          <a href="#journey" class="inline-flex items-center gap-2 border-2 border-navy-700 text-navy-700 font-semibold px-7 py-3.5 rounded-full hover:bg-navy-700 hover:text-white transition-colors focus-visible-ring">
+            SEE THE TIMELINE
+          </a>
+        </div>
+
+        <div class="mt-10 flex items-center gap-6">
+          <div class="flex items-center gap-2">
+            <i data-lucide="file-check-2" class="h-5 w-5 text-ember"></i>
+            <span class="text-sm text-navy-700/70">80G Tax Exempt</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="badge-check" class="h-5 w-5 text-ember"></i>
+            <span class="text-sm text-navy-700/70">Registered Public Trust</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -top-6 -right-4 h-24 w-24 dot-pattern opacity-40 hidden sm:block"></div>
+        <div class="absolute -bottom-8 -left-6 h-20 w-20 rounded-full bg-navy-100/60 hidden sm:block"></div>
+        <img src="https://res.cloudinary.com/yqurny1w/image/upload/v1784406290/944489353378987061_dinofg.jpg"
+             alt="Children receiving learning materials"
+             class="relative rounded-[2rem] w-full h-[380px] sm:h-[440px] object-cover shadow-2xl shadow-navy-700/15" />
+        <div class="absolute -bottom-6 left-6 flex items-center gap-3 bg-white rounded-xl shadow-xl shadow-navy-700/15 px-5 py-4 border border-navy-50">
+          <div class="h-11 w-11 rounded-full bg-ember-50 flex items-center justify-center">
+            <i data-lucide="pie-chart" class="h-5 w-5 text-ember"></i>
+          </div>
+          <div>
+            <p class="font-display font-bold text-navy-700 text-sm">90% to the field</p>
+            <p class="text-xs text-navy-700/60">Only 10% for admin & operations</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FUND ALLOCATION ============ -->
+<section class="bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+    <div class="text-center max-w-xl mx-auto">
+      <span class="text-xs font-semibold tracking-wider text-ember uppercase">Where It Goes</span>
+      <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl text-navy-700">Your ₹1 Split Into Impact</h2>
+      <p class="mt-4 text-navy-700/70">A transparent breakdown of how every donation is allocated across our core work.</p>
+    </div>
+
+    <div class="mt-14 grid lg:grid-cols-2 gap-14 items-center">
+      <div class="space-y-7">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-display font-semibold text-navy-700 text-sm flex items-center gap-2">
+              <i data-lucide="book-open-check" class="h-4 w-4 text-ember"></i> Education Support
+            </span>
+            <span class="font-display font-bold text-navy-700 text-sm">55%</span>
+          </div>
+          <div class="h-3 w-full bg-navy-50 rounded-full overflow-hidden">
+            <div class="alloc-bar-fill h-full bg-ember rounded-full" style="width: 55%"></div>
+          </div>
+          <p class="mt-1.5 text-xs text-navy-700/60">Scholarships, books, uniforms, and tutoring</p>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-display font-semibold text-navy-700 text-sm flex items-center gap-2">
+              <i data-lucide="hammer" class="h-4 w-4 text-navy-700"></i> Skill Development
+            </span>
+            <span class="font-display font-bold text-navy-700 text-sm">20%</span>
+          </div>
+          <div class="h-3 w-full bg-navy-50 rounded-full overflow-hidden">
+            <div class="alloc-bar-fill h-full bg-navy-700 rounded-full" style="width: 20%"></div>
+          </div>
+          <p class="mt-1.5 text-xs text-navy-700/60">Vocational training for youth and women</p>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-display font-semibold text-navy-700 text-sm flex items-center gap-2">
+              <i data-lucide="hand-heart" class="h-4 w-4 text-emerald-600"></i> Social Welfare
+            </span>
+            <span class="font-display font-bold text-navy-700 text-sm">15%</span>
+          </div>
+          <div class="h-3 w-full bg-navy-50 rounded-full overflow-hidden">
+            <div class="alloc-bar-fill h-full bg-emerald-600 rounded-full" style="width: 15%"></div>
+          </div>
+          <p class="mt-1.5 text-xs text-navy-700/60">Health camps, nutrition, and welfare drives</p>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-display font-semibold text-navy-700 text-sm flex items-center gap-2">
+              <i data-lucide="settings" class="h-4 w-4 text-navy-700/50"></i> Admin & Operations
+            </span>
+            <span class="font-display font-bold text-navy-700 text-sm">10%</span>
+          </div>
+          <div class="h-3 w-full bg-navy-50 rounded-full overflow-hidden">
+            <div class="alloc-bar-fill h-full bg-navy-700/40 rounded-full" style="width: 10%"></div>
+          </div>
+          <p class="mt-1.5 text-xs text-navy-700/60">Staff, compliance, and program logistics</p>
+        </div>
+      </div>
+
+      <div class="bg-offwhite rounded-2xl p-8 lg:p-10 border border-navy-50">
+        <h3 class="font-display font-bold text-xl text-navy-700">What ₹500 Actually Buys</h3>
+        <p class="mt-2 text-sm text-navy-700/60">Real, itemized examples so the number isn't abstract.</p>
+        <ul class="mt-6 space-y-4">
+          <li class="flex items-start gap-3">
+            <div class="h-9 w-9 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm border border-navy-50">
+              <i data-lucide="backpack" class="h-4 w-4 text-ember"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-navy-700">₹500</p>
+              <p class="text-xs text-navy-700/60">A full school stationery kit for one child, for one year</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="h-9 w-9 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm border border-navy-50">
+              <i data-lucide="utensils" class="h-4 w-4 text-ember"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-navy-700">₹1,500</p>
+              <p class="text-xs text-navy-700/60">One month of nutrition support for a child at a learning center</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="h-9 w-9 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm border border-navy-50">
+              <i data-lucide="graduation-cap" class="h-4 w-4 text-ember"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-navy-700">₹5,000</p>
+              <p class="text-xs text-navy-700/60">A full-term scholarship covering fees, books, and uniform</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="h-9 w-9 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm border border-navy-50">
+              <i data-lucide="wrench" class="h-4 w-4 text-ember"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-navy-700">₹15,000</p>
+              <p class="text-xs text-navy-700/60">A 3-month vocational training seat for one young adult</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE: JOURNEY OF YOUR DONATION ============ -->
+<section id="journey" class="bg-offwhite">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+    <div class="text-center max-w-xl mx-auto">
+      <span class="text-xs font-semibold tracking-wider text-ember uppercase">Full Transparency</span>
+      <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl text-navy-700">The Journey Of Your Donation</h2>
+      <p class="mt-4 text-navy-700/70">From the moment you click "Donate" to the day it reaches a child — here is exactly what happens, and when.</p>
+    </div>
+
+    <div class="mt-16 relative max-w-3xl mx-auto">
+      <div class="timeline-line absolute left-5 sm:left-1/2 top-0 bottom-0 w-0.5 sm:-translate-x-1/2"></div>
+
+      <div class="space-y-12">
+        <!-- Step 1 -->
+        <div class="relative flex sm:justify-start sm:even:justify-end">
+          <div class="flex sm:w-1/2 sm:pr-10 sm:even:pl-10 sm:even:pr-0 gap-5 sm:gap-0">
+            <div class="timeline-dot absolute left-5 sm:left-1/2 -translate-x-1/2 h-4 w-4 rounded-full bg-ember mt-1.5"></div>
+            <div class="ml-12 sm:ml-0 bg-white rounded-2xl p-6 shadow-md shadow-navy-700/5 border border-navy-50 card-hover">
+              <span class="text-xs font-semibold text-ember uppercase tracking-wide">Day 0</span>
+              <h3 class="mt-1 font-display font-bold text-lg text-navy-700">You Donate</h3>
+              <p class="mt-2 text-sm text-navy-700/70 leading-relaxed">
+                Your payment is processed securely and an instant receipt with your
+                80G tax-exemption certificate is emailed to you.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative flex sm:justify-end">
+          <div class="flex sm:w-1/2 sm:pl-10 gap-5 sm:gap-0">
+            <div class="timeline-dot absolute left-5 sm:left-1/2 -translate-x-1/2 h-4 w-4 rounded-full bg-navy-700 mt-1.5"></div>
+            <div class="ml-12 sm:ml-0 bg-white rounded-2xl p-6 shadow-md shadow-navy-700/5 border border-navy-50 card-hover">
+              <span class="text-xs font-semibold text-navy-700 uppercase tracking-wide">Week 1</span>
+              <h3 class="mt-1 font-display font-bold text-lg text-navy-700">Funds Are Pooled & Allocated</h3>
+              <p class="mt-2 text-sm text-navy-700/70 leading-relaxed">
+                Our finance committee logs the contribution and allocates it against
+                the current term's program budget — education, skilling, or welfare.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative flex sm:justify-start">
+          <div class="flex sm:w-1/2 sm:pr-10 gap-5 sm:gap-0">
+            <div class="timeline-dot absolute left-5 sm:left-1/2 -translate-x-1/2 h-4 w-4 rounded-full bg-ember mt-1.5"></div>
+            <div class="ml-12 sm:ml-0 bg-white rounded-2xl p-6 shadow-md shadow-navy-700/5 border border-navy-50 card-hover">
+              <span class="text-xs font-semibold text-ember uppercase tracking-wide">Week 2–3</span>
+              <h3 class="mt-1 font-display font-bold text-lg text-navy-700">Materials & Support Are Procured</h3>
+              <p class="mt-2 text-sm text-navy-700/70 leading-relaxed">
+                Books, uniforms, training kits, or health camp supplies are purchased
+                through verified local vendors, with invoices retained for audit.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative flex sm:justify-end">
+          <div class="flex sm:w-1/2 sm:pl-10 gap-5 sm:gap-0">
+            <div class="timeline-dot absolute left-5 sm:left-1/2 -translate-x-1/2 h-4 w-4 rounded-full bg-navy-700 mt-1.5"></div>
+            <div class="ml-12 sm:ml-0 bg-white rounded-2xl p-6 shadow-md shadow-navy-700/5 border border-navy-50 card-hover">
+              <span class="text-xs font-semibold text-navy-700 uppercase tracking-wide">Week 4</span>
+              <h3 class="mt-1 font-display font-bold text-lg text-navy-700">Delivered On The Ground</h3>
+              <p class="mt-2 text-sm text-navy-700/70 leading-relaxed">
+                Our field team distributes materials or runs the program session
+                directly in partner villages and learning centers.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="relative flex sm:justify-start">
+          <div class="flex sm:w-1/2 sm:pr-10 gap-5 sm:gap-0">
+            <div class="timeline-dot absolute left-5 sm:left-1/2 -translate-x-1/2 h-4 w-4 rounded-full bg-emerald-600 mt-1.5"></div>
+            <div class="ml-12 sm:ml-0 bg-white rounded-2xl p-6 shadow-md shadow-navy-700/5 border border-navy-50 card-hover">
+              <span class="text-xs font-semibold text-emerald-600 uppercase tracking-wide">Week 5–6</span>
+              <h3 class="mt-1 font-display font-bold text-lg text-navy-700">Impact Is Documented</h3>
+              <p class="mt-2 text-sm text-navy-700/70 leading-relaxed">
+                Photos, attendance records, and progress notes are collected from the
+                field team to track outcomes against goals.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="relative flex sm:justify-end">
+          <div class="flex sm:w-1/2 sm:pl-10 gap-5 sm:gap-0">
+            <div class="timeline-dot absolute left-5 sm:left-1/2 -translate-x-1/2 h-4 w-4 rounded-full bg-ember mt-1.5"></div>
+            <div class="ml-12 sm:ml-0 bg-white rounded-2xl p-6 shadow-md shadow-navy-700/5 border border-navy-50 card-hover">
+              <span class="text-xs font-semibold text-ember uppercase tracking-wide">Quarterly</span>
+              <h3 class="mt-1 font-display font-bold text-lg text-navy-700">You Get A Report</h3>
+              <p class="mt-2 text-sm text-navy-700/70 leading-relaxed">
+                Every donor receives a quarterly impact update by email, and our full
+                audited financials are published annually for anyone to review.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACCOUNTABILITY / TRUST STRIP ============ -->
+<section class="bg-navy-700">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+    <div class="text-center max-w-xl mx-auto">
+      <span class="text-xs font-semibold tracking-wider text-ember uppercase">Accountability</span>
+      <h2 class="mt-3 font-display font-bold text-2xl sm:text-3xl text-white">How We Stay Answerable To You</h2>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="flex flex-col items-center text-center gap-3">
+        <div class="h-14 w-14 rounded-full bg-ember/15 flex items-center justify-center">
+          <i data-lucide="file-text" class="h-6 w-6 text-ember"></i>
+        </div>
+        <p class="font-display font-semibold text-white text-sm">Annual Audited Reports</p>
+        <p class="text-navy-100/70 text-xs leading-relaxed">Independently audited financials published every year</p>
+      </div>
+      <div class="flex flex-col items-center text-center gap-3">
+        <div class="h-14 w-14 rounded-full bg-ember/15 flex items-center justify-center">
+          <i data-lucide="receipt" class="h-6 w-6 text-ember"></i>
+        </div>
+        <p class="font-display font-semibold text-white text-sm">Instant Receipts</p>
+        <p class="text-navy-100/70 text-xs leading-relaxed">80G-compliant receipts issued the moment you donate</p>
+      </div>
+      <div class="flex flex-col items-center text-center gap-3">
+        <div class="h-14 w-14 rounded-full bg-ember/15 flex items-center justify-center">
+          <i data-lucide="camera" class="h-6 w-6 text-ember"></i>
+        </div>
+        <p class="font-display font-semibold text-white text-sm">Photo & Video Proof</p>
+        <p class="text-navy-100/70 text-xs leading-relaxed">Field documentation shared in quarterly donor updates</p>
+      </div>
+      <div class="flex flex-col items-center text-center gap-3">
+        <div class="h-14 w-14 rounded-full bg-ember/15 flex items-center justify-center">
+          <i data-lucide="mail-question" class="h-6 w-6 text-ember"></i>
+        </div>
+        <p class="font-display font-semibold text-white text-sm">Ask Us Anytime</p>
+        <p class="text-navy-100/70 text-xs leading-relaxed">Write in and we'll show you exactly where a donation went</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact" class="bg-navy-800 text-navy-100">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div>
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="https://res.cloudinary.com/yqurny1w/image/upload/v1784406791/Aksharadhare_logo-01.jpg_1_-_Copy_rvojci.jpg" alt="AksharaDahare Trust logo" class="h-16 w-16 rounded-lg object-cover" />
+        </a>
+        <p class="mt-4 text-sm text-navy-100/70 leading-relaxed">
+          A registered public charitable trust working to make quality education
+          accessible for every child.
+        </p>
+        <div class="mt-5 flex items-center gap-3">
+          <a href="#" aria-label="Facebook" class="h-9 w-9 rounded-full bg-white/10 hover:bg-ember transition-colors flex items-center justify-center focus-visible-ring">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 text-white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="h-9 w-9 rounded-full bg-white/10 hover:bg-ember transition-colors flex items-center justify-center focus-visible-ring">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 text-white"><path d="M12 0C8.74 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.058-1.28.072-1.687.072-4.947s-.014-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.014 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="h-9 w-9 rounded-full bg-white/10 hover:bg-ember transition-colors flex items-center justify-center focus-visible-ring">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 text-white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube" class="h-9 w-9 rounded-full bg-white/10 hover:bg-ember transition-colors flex items-center justify-center focus-visible-ring">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 text-white"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.391.524A2.994 2.994 0 0 0 .502 6.186 31.223 31.223 0 0 0 0 12a31.223 31.223 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117c1.886.524 9.391.524 9.391.524s7.505 0 9.391-.524a2.994 2.994 0 0 0 2.107-2.117A31.223 31.223 0 0 0 24 12a31.223 31.223 0 0 0-.502-5.814zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-display font-semibold text-white text-sm uppercase tracking-wide">Quick Links</h4>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li><a href="index.html" class="hover:text-ember transition-colors">Home</a></li>
+          <li><a href="index.html#about" class="hover:text-ember transition-colors">About Us</a></li>
+          <li><a href="index.html#programs" class="hover:text-ember transition-colors">Programs</a></li>
+          <li><a href="index.html#gallery" class="hover:text-ember transition-colors">Gallery</a></li>
+          <li><a href="donate.html" class="hover:text-ember transition-colors">Donate</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display font-semibold text-white text-sm uppercase tracking-wide">Our Programs</h4>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li><a href="index.html#programs" class="hover:text-ember transition-colors">Education Support</a></li>
+          <li><a href="index.html#programs" class="hover:text-ember transition-colors">Skill Development</a></li>
+          <li><a href="index.html#programs" class="hover:text-ember transition-colors">Social Welfare</a></li>
+          <li><a href="#" class="volunteer-trigger hover:text-ember transition-colors">Volunteer Program</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display font-semibold text-white text-sm uppercase tracking-wide">Get In Touch</h4>
+        <ul class="mt-5 space-y-4 text-sm">
+          <li class="flex items-start gap-3">
+            <i data-lucide="map-pin" class="h-4 w-4 text-ember mt-0.5 flex-shrink-0"></i>
+            <span>12-4-5, Chikkaballapura, Bangalore, Karnataka</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i data-lucide="phone" class="h-4 w-4 text-ember flex-shrink-0"></i>
+            <span>+91 99999 99999</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i data-lucide="mail" class="h-4 w-4 text-ember flex-shrink-0"></i>
+            <span>hello@aksharadaharetrust.org</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-navy-100/60">
+      <p>© 2026 Akshara Dhare Seva Trust. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-ember transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-ember transition-colors">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let menuOpen = false;
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      mobileMenu.style.opacity = '1';
+      menuBtn.innerHTML = '<i data-lucide="x" class="h-5 w-5 text-navy-700"></i>';
+    } else {
+      mobileMenu.style.maxHeight = '0px';
+      mobileMenu.style.opacity = '0';
+      menuBtn.innerHTML = '<i data-lucide="menu" class="h-5 w-5 text-navy-700"></i>';
+    }
+    lucide.createIcons();
+  });
+
+  /* Modals (event delegation so it works regardless of DOM load order) */
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    lucide.createIcons();
+  }
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  function closeAllModals() {
+    document.querySelectorAll('.app-modal:not(.hidden)').forEach((m) => m.classList.add('hidden'));
+    document.body.style.overflow = '';
+  }
+
+  function resetVolunteerForm() {
+    const form = document.getElementById('volunteerForm');
+    const success = document.getElementById('volunteerSuccess');
+    const error = document.getElementById('volunteerError');
+    if (form) {
+      form.reset();
+      form.classList.remove('hidden');
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.disabled = false;
+        const label = btn.querySelector('.btn-label');
+        if (label) label.textContent = 'SUBMIT DETAILS';
+      }
+    }
+    if (success) success.classList.add('hidden');
+    if (error) error.classList.add('hidden');
+  }
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.donate-trigger')) {
+      e.preventDefault();
+      openModal('donateModal');
+      return;
+    }
+    if (e.target.closest('.volunteer-trigger')) {
+      e.preventDefault();
+      resetVolunteerForm();
+      openModal('volunteerModal');
+      return;
+    }
+    if (e.target.closest('[data-modal-close]')) {
+      e.preventDefault();
+      closeModal(e.target.closest('.app-modal'));
+      return;
+    }
+    const copyBtn = e.target.closest('.copy-btn');
+    if (copyBtn) {
+      const text = copyBtn.getAttribute('data-copy');
+      navigator.clipboard.writeText(text).then(() => {
+        const icon = copyBtn.querySelector('i');
+        icon.setAttribute('data-lucide', 'check');
+        lucide.createIcons();
+        setTimeout(() => {
+          icon.setAttribute('data-lucide', 'copy');
+          lucide.createIcons();
+        }, 1500);
+      });
+    }
+  });
+
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAllModals(); });
+
+  document.addEventListener('submit', (e) => {
+    const form = e.target.closest('#volunteerForm');
+    if (!form) return;
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const btnLabel = submitBtn.querySelector('.btn-label');
+    submitBtn.disabled = true;
+    btnLabel.textContent = 'SENDING...';
+    document.getElementById('volunteerError').classList.add('hidden');
+
+    const payload = {
+      Name: form.name.value,
+      'Phone Number': form.phone.value,
+      Address: form.address.value,
+      'Email ID': form.email.value,
+      'Willing to volunteer': form.willing.checked ? 'Yes' : 'No',
+      _subject: 'New Volunteer Signup — Akshara Dhare Seva Trust',
+    };
+
+    fetch('https://formsubmit.co/ajax/saivenkat09565@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => { if (!res.ok) throw new Error('Request failed'); return res.json(); })
+      .then(() => {
+        form.classList.add('hidden');
+        document.getElementById('volunteerSuccess').classList.remove('hidden');
+        lucide.createIcons();
+      })
+      .catch(() => {
+        submitBtn.disabled = false;
+        btnLabel.textContent = 'SUBMIT DETAILS';
+        document.getElementById('volunteerError').classList.remove('hidden');
+      });
+  });
+</script>
+<!-- ============ DONATE MODAL ============ -->
+<div id="donateModal" class="app-modal fixed inset-0 z-[100] hidden">
+  <div class="absolute inset-0 bg-navy-900/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="relative min-h-full flex items-center justify-center p-4">
+    <div class="donate-modal-panel relative bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="donateModalTitle">
+
+      <!-- Header -->
+      <div class="bg-navy-700 px-6 py-5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="https://res.cloudinary.com/yqurny1w/image/upload/v1784405517/Untitled_design_sdeyo6.jpg" alt="Trust logo" class="h-10 w-10 rounded-full object-cover bg-white p-0.5" />
+          <div>
+            <p id="donateModalTitle" class="font-display font-bold text-white text-sm leading-tight">Akshara Dhare Seva Trust</p>
+            <p class="text-navy-100/70 text-[11px] mt-0.5">Registered Public Charitable Trust</p>
+          </div>
+        </div>
+        <button data-modal-close aria-label="Close" class="h-8 w-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white focus-visible-ring flex-shrink-0">
+          <i data-lucide="x" class="h-4 w-4"></i>
+        </button>
+      </div>
+
+      <div class="max-h-[80vh] overflow-y-auto">
+
+        <!-- Trust badge -->
+        <div class="px-6 pt-6 text-center">
+          <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
+            <i data-lucide="badge-check" class="h-3.5 w-3.5"></i> Verified Trust Account · 80G Registered
+          </span>
+          <h3 class="mt-3 font-display font-bold text-xl text-navy-700">Scan &amp; Pay Instantly</h3>
+          <p class="mt-1 text-xs text-navy-700/60">Use any UPI app — GPay, PhonePe, Paytm, or BHIM</p>
+        </div>
+
+        <!-- QR Code -->
+        <div class="px-6 pt-5 flex justify-center">
+          <div class="bg-offwhite border border-navy-100 rounded-2xl p-4 flex flex-col items-center">
+            <div class="bg-white p-2 rounded-xl border border-navy-50">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=6&data=upi%3A%2F%2Fpay%3Fpa%3Daksharadharetrust%40okicici%26pn%3DAkshara%2520Dhare%2520Seva%2520Trust%26cu%3DINR"
+                   alt="Scan this QR code with any UPI app to donate to Akshara Dhare Seva Trust"
+                   class="h-44 w-44" />
+            </div>
+            <p class="mt-3 text-xs text-navy-700/60">UPI ID</p>
+            <div class="mt-1 flex items-center gap-2">
+              <p class="text-sm font-semibold text-navy-700 tracking-wide">aksharadharetrust@okicici</p>
+              <button class="copy-btn h-7 w-7 rounded-full hover:bg-navy-100 flex items-center justify-center text-navy-700/60 focus-visible-ring flex-shrink-0" data-copy="aksharadharetrust@okicici" aria-label="Copy UPI ID">
+                <i data-lucide="copy" class="h-3.5 w-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="px-6 mt-6">
+          <div class="flex items-center gap-3">
+            <div class="flex-1 h-px bg-navy-50"></div>
+            <span class="text-[11px] uppercase tracking-wide text-navy-700/40 font-semibold">Or transfer via bank</span>
+            <div class="flex-1 h-px bg-navy-50"></div>
+          </div>
+        </div>
+
+        <!-- Bank details -->
+        <div class="px-6 py-5 space-y-3">
+          <div class="bg-offwhite rounded-xl px-4 py-3 border border-navy-50">
+            <p class="text-[11px] text-navy-700/50">Account Name</p>
+            <p class="text-sm font-semibold text-navy-700">Samtulana Akshara Dhare Seva Trust</p>
+          </div>
+
+          <div class="flex items-center justify-between gap-3 bg-offwhite rounded-xl px-4 py-3 border border-navy-50">
+            <div>
+              <p class="text-[11px] text-navy-700/50">Account Number</p>
+              <p class="text-sm font-semibold text-navy-700 tracking-wide">XXXXXXXXXXXX4521</p>
+            </div>
+            <button class="copy-btn h-8 w-8 rounded-full hover:bg-navy-100 flex items-center justify-center text-navy-700/60 focus-visible-ring flex-shrink-0" data-copy="XXXXXXXXXXXX4521" aria-label="Copy account number">
+              <i data-lucide="copy" class="h-4 w-4"></i>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-offwhite rounded-xl px-4 py-3 border border-navy-50">
+              <p class="text-[11px] text-navy-700/50">IFSC Code</p>
+              <p class="text-sm font-semibold text-navy-700">SBIN0XXXXXX</p>
+            </div>
+            <div class="bg-offwhite rounded-xl px-4 py-3 border border-navy-50">
+              <p class="text-[11px] text-navy-700/50">Branch</p>
+              <p class="text-sm font-semibold text-navy-700">Nidadavole</p>
+            </div>
+          </div>
+
+          <div class="bg-offwhite rounded-xl px-4 py-3 border border-navy-50">
+            <p class="text-[11px] text-navy-700/50">Bank &amp; Account Type</p>
+            <p class="text-sm font-semibold text-navy-700">State Bank of India — Current Account</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-offwhite rounded-xl px-4 py-3 border border-navy-50">
+              <p class="text-[11px] text-navy-700/50">PAN</p>
+              <p class="text-sm font-semibold text-navy-700">AAXXXXXXXX</p>
+            </div>
+            <div class="bg-offwhite rounded-xl px-4 py-3 border border-navy-50">
+              <p class="text-[11px] text-navy-700/50">80G Reg. No.</p>
+              <p class="text-sm font-semibold text-navy-700">AAXXX1234XF20XX</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Receipt note -->
+        <div class="px-6 pb-6">
+          <div class="flex items-start gap-3 bg-ember-50 rounded-xl px-4 py-3.5">
+            <i data-lucide="send" class="h-4 w-4 text-ember mt-0.5 flex-shrink-0"></i>
+            <p class="text-xs text-navy-700/70 leading-relaxed">
+              After paying, please WhatsApp your payment screenshot and name to
+              <span class="font-semibold text-navy-700">+91 99999 99999</span> so we can email your 80G tax-exemption receipt within 24 hours.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VOLUNTEER MODAL ============ -->
+<div id="volunteerModal" class="app-modal fixed inset-0 z-[100] hidden">
+  <div class="absolute inset-0 bg-navy-900/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="relative min-h-full flex items-center justify-center p-4">
+    <div class="donate-modal-panel relative bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="volunteerModalTitle">
+
+      <!-- Header -->
+      <div class="bg-navy-700 px-6 py-5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="hand-heart" class="h-5 w-5 text-white"></i>
+          </div>
+          <div>
+            <p id="volunteerModalTitle" class="font-display font-bold text-white text-sm leading-tight">Become A Volunteer</p>
+            <p class="text-navy-100/70 text-[11px] mt-0.5">Join 100+ volunteers making a difference</p>
+          </div>
+        </div>
+        <button data-modal-close aria-label="Close" class="h-8 w-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white focus-visible-ring flex-shrink-0">
+          <i data-lucide="x" class="h-4 w-4"></i>
+        </button>
+      </div>
+
+      <div class="max-h-[80vh] overflow-y-auto">
+
+        <!-- Form -->
+        <form id="volunteerForm" class="px-6 pt-6 pb-6 space-y-4">
+          <div>
+            <label for="volName" class="block text-xs font-semibold text-navy-700/70 mb-1.5">Name</label>
+            <input id="volName" name="name" type="text" required placeholder="Your full name"
+              class="w-full rounded-lg border border-navy-100 px-4 py-2.5 text-sm text-navy-700 placeholder:text-navy-700/30 focus:border-ember focus:ring-2 focus:ring-ember-100 outline-none transition" />
+          </div>
+
+          <div>
+            <label for="volPhone" class="block text-xs font-semibold text-navy-700/70 mb-1.5">Phone Number</label>
+            <input id="volPhone" name="phone" type="tel" required placeholder="+91 98765 43210"
+              class="w-full rounded-lg border border-navy-100 px-4 py-2.5 text-sm text-navy-700 placeholder:text-navy-700/30 focus:border-ember focus:ring-2 focus:ring-ember-100 outline-none transition" />
+          </div>
+
+          <div>
+            <label for="volAddress" class="block text-xs font-semibold text-navy-700/70 mb-1.5">Address</label>
+            <textarea id="volAddress" name="address" required rows="2" placeholder="Village / Town, District, State"
+              class="w-full rounded-lg border border-navy-100 px-4 py-2.5 text-sm text-navy-700 placeholder:text-navy-700/30 focus:border-ember focus:ring-2 focus:ring-ember-100 outline-none transition resize-none"></textarea>
+          </div>
+
+          <div>
+            <label for="volEmail" class="block text-xs font-semibold text-navy-700/70 mb-1.5">Email ID</label>
+            <input id="volEmail" name="email" type="email" required placeholder="you@example.com"
+              class="w-full rounded-lg border border-navy-100 px-4 py-2.5 text-sm text-navy-700 placeholder:text-navy-700/30 focus:border-ember focus:ring-2 focus:ring-ember-100 outline-none transition" />
+          </div>
+
+          <label class="flex items-start gap-3 bg-offwhite rounded-xl px-4 py-3.5 border border-navy-50 cursor-pointer">
+            <input type="checkbox" name="willing" required class="mt-0.5 h-4 w-4 rounded border-navy-200 text-ember focus:ring-ember-200 flex-shrink-0" />
+            <span class="text-sm text-navy-700/80 leading-snug">Are you willing to volunteer in the Akshara Dhare Seva Trust?</span>
+          </label>
+
+          <div id="volunteerError" class="hidden flex items-start gap-3 bg-red-50 rounded-xl px-4 py-3 border border-red-100">
+            <i data-lucide="alert-circle" class="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0"></i>
+            <p class="text-xs text-red-700 leading-relaxed">Something went wrong sending your details. Please try again, or reach us directly at hello@aksharadharetrust.org.</p>
+          </div>
+
+          <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-ember hover:bg-ember-600 transition-colors text-white font-semibold px-6 py-3 rounded-full focus-visible-ring">
+            <span class="btn-label">SUBMIT DETAILS</span>
+            <i data-lucide="send" class="h-4 w-4"></i>
+          </button>
+
+          <p class="text-center text-[11px] text-navy-700/50">Your details go straight to our volunteer coordination team.</p>
+        </form>
+
+        <!-- Success state -->
+        <div id="volunteerSuccess" class="hidden px-6 py-12 text-center">
+          <div class="h-14 w-14 mx-auto rounded-full bg-emerald-50 flex items-center justify-center">
+            <i data-lucide="check-circle-2" class="h-7 w-7 text-emerald-600"></i>
+          </div>
+          <h3 class="mt-4 font-display font-bold text-lg text-navy-700">Thank You!</h3>
+          <p class="mt-2 text-sm text-navy-700/70 max-w-xs mx-auto">Your volunteer details have been sent. Our team will reach out to you soon.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
